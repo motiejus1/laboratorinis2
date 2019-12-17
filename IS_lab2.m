@@ -27,4 +27,29 @@ w_12_3 = randn(1);
 b_1_3 = randn(1);
 
 w_11_4 = randn(1);
-b1_4 = randn(1);
+b_1_4 = randn(1);
+
+%apsirasome pradinius duomenis
+eklaida = 1
+
+%reikia ciklo
+%skaiciuojame kol klaidos tikimybe 4%
+while abs(eklaida) > 0.04
+    %kadangi x reiksmiu vektorius reikia atlikti perskaiciavimus su visais
+    %x
+    for iterator = 1:1:length(x)
+            %pirmo niaurono apmokymas
+
+        %Pirmas niauronas
+        v_1_1 = x(iterator)*w_11_1+b_1_1
+        v_2_1 = x(iterator)*w_21_1+b_2_1
+        y_1_1 = 1/(1+exp(-v_1_1))
+        y_2_1 = 1/(1+exp(-v_2_1))
+    end
+    
+end
+
+
+
+
+
