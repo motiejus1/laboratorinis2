@@ -45,10 +45,17 @@ e = zeros(1,length(x));
 y = zeros(1,length(x));
 %iteraciju skaitiklis
 i = 0;
-    %toks skaicius nes ties 0.0000002135 pasiekiamas arciausias rezultatas,
+
+%kvadratine paklaida
+kvadrat = 1;
+
+%toks skaicius nes ties 0.0000002135 pasiekiamas arciausias rezultatas,
     %%0.0000014858 kitas skaicius
-    %vidutine grafiko kvadratine paklaida 0.0032049894  
-    while eklaida > 0.0000002145                 %0.0000014859
+    %vidutine grafiko kvadratine paklaida 0.0032049894
+    %eklaida > 0.0000002145 
+    %skaiciavimas pagal e keiciamas i skaiciavima pagal vidutine kvadratine
+    %paklaida
+    while kvadrat > 0.004                %0.0000014859
                     
         %kadangi x reiksmiu vektorius reikia atlikti perskaiciavimus su visais
         i = i+1;
@@ -123,11 +130,8 @@ i = 0;
         end    
         %isvedimas klaidos. Naudojama paskutine x reiksmes klaida.
         %isvedamas iteraciju skaicius
-        fprintf('e1 = %2.10f iteracija = %2f   \n',eklaida, i);
-        
-      
-      
-
+        kvadrat = immse(y,d);
+        fprintf('e1 = %2.10f iteracija = %2f kvadratine paklaida = %2f  \n',eklaida, i, kvadrat);
     end
 
 
@@ -137,7 +141,7 @@ i = 0;
     plot(d);
     legend('aproksimuota kreive', 'originali kreive');
     %apskaiciuojama vidutine kvadratine paklaida
-    fprintf('vidutine kvadratine paklaida = %2.10f   \n',immse(y,d));
+    %fprintf('vidutine kvadratine paklaida = %2.10f   \n',immse(y,d));
 
 
 
