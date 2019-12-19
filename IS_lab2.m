@@ -127,10 +127,13 @@ kvadrat = 1;
 
             b_21 = randn(1);
             i=0;
-        end    
+        end
+        %immse funkcija randa vidutine kvadratine paklaida tarp originaliu
+        %ir gautu reiksmiu
+        kvadrat = immse(y,d);
         %isvedimas klaidos. Naudojama paskutine x reiksmes klaida.
         %isvedamas iteraciju skaicius
-        kvadrat = immse(y,d);
+       
         fprintf('e1 = %2.10f iteracija = %2f kvadratine paklaida = %2f  \n',eklaida, i, kvadrat);
     end
 
