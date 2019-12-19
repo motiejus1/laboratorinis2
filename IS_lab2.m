@@ -9,29 +9,30 @@ x = 1/20:1/20:1;
 %originali funkcijos reiksme
 d =(1 + 0.6*sin((2*pi*x)/0.7)+0.3*sin(2*pi*x))/2;
 %Zingsinis
-et = 0.3;
+et = 0.5;
 %neuronu svoriai ir b kintamieji. visi parenkami random iki 1. Pakoreguotas
 %numeravimas pagal paskaitos uzrasus, nes blogai skaiciavo koeficientus
 
-w_11 = randn(1);
-w_12 = randn(1);
-w_13 = randn(1);
-w_14 = randn(1);
 
-b_11 = randn(1);
-b_12 = randn(1);
-b_13 = randn(1);
-b_14 = randn(1);
+ w_11 = randn(1);
+ w_12 = randn(1);
+ w_13 = randn(1);
+ w_14 = randn(1);
 
-w_21 = randn(1);
-w_22 = randn(1);
-w_23 = randn(1);
-w_24 = randn(1);
+ b_11 = randn(1);
+ b_12 = randn(1);
+ b_13 = randn(1);
+ b_14 = randn(1);
 
-b_21 = randn(1);
+ w_21 = randn(1);
+ w_22 = randn(1);
+ w_23 = randn(1);
+ w_24 = randn(1);
+
+ b_21 = randn(1);
 
 %isirasom koeficientus i masyva jei geri duomenys
-A = [w_11 w_12 w_13 w_14 b_11 b_12 b_13 b_14 w_21 w_22 w_23 w_24 b_21 ]
+A = [w_11 w_12 w_13 w_14 b_11 b_12 b_13 b_14 w_21 w_22 w_23 w_24 b_21 ];
 
 %apsirasome pradinius duomenis
 eklaida = 1;
@@ -109,7 +110,7 @@ kvadrat = 1;
         preklaida = eklaida;
         %jei per n iteraciju nepasiekiamas norimas tikslumas,
         %atnaujinami svorio koeficientai
-        if(i==50000)
+        if(i==10000)
             w_11 = randn(1);
             w_12 = randn(1);
             w_13 = randn(1);
@@ -126,11 +127,17 @@ kvadrat = 1;
             w_24 = randn(1);
 
             b_21 = randn(1);
+            %keiciam zingsni
+            et = et - 0.02;
+            if(et == 0.2)
+            et = 0.5;
+            end    
             i=0;
         end
         %immse funkcija randa vidutine kvadratine paklaida tarp originaliu
         %ir gautu reiksmiu
-        kvadrat = immse(y,d);
+        
+        kvadrat = immse(y,d);   
         %isvedimas klaidos. Naudojama paskutine x reiksmes klaida.
         %isvedamas iteraciju skaicius
        
